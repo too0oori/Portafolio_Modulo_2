@@ -22,3 +22,5 @@ window.onload = function() {
     // Mensaje simple en consola
     console.log('¡Hola! Mi portafolio está funcionando correctamente 👋');
 };
+
+// flechita para subir //
