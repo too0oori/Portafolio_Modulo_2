@@ -1,26 +1,28 @@
-window.onload = function() {
-    
-    // ÚNICO EFECTO: Navegación suave al hacer click en el menú
-    var enlaces = document.querySelectorAll('.nav-link');
-    
-    for (var i = 0; i < enlaces.length; i++) {
-        enlaces[i].onclick = function(evento) {
-            var href = this.getAttribute('href');
-            
-            // Solo si el enlace empieza con #
-            if (href && href[0] === '#') {
-                evento.preventDefault();
-                var seccion = document.querySelector(href);
-                
-                if (seccion) {
-                    seccion.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        };
-    }
-    
-    // Mensaje simple en consola
-    console.log('¡Hola! Mi portafolio está funcionando correctamente 👋');
-};
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
 
-// flechita para subir //
+    // Botón de desplazamiento hacia arriba
+    const btn = document.getElementById("btn-back-to-top");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 2000) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    });
+
+    btn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
